@@ -65,6 +65,9 @@
                                 <a href="{{ url('admin/PurchaseOrders') }}" class="nav-link" data-key="t-order">Purchase
                                     Orders</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('admin/deliverys') }}" class="nav-link" data-key="t-order">Delivery Informations</a>
+                            </li>
 
 
 

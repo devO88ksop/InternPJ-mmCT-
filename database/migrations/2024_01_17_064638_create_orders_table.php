@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('order_status')->nullable();
             $table->string('shipping_address');
+            $table->string('shipping_phone');
             $table->timestamps();
         });
     }

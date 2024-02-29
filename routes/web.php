@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DeliveryController;
 use Illuminate\Console\View\Components\Alert;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\PurchaseOrderController;
@@ -48,6 +49,7 @@ Route::get('preorder', [OrderController::class,'preOrder'])->name('preorder');
 Route::resource('subcategories', SubCategoryController::class);
 Route::resource('PurchaseOrders', PurchaseOrderController::class);
 Route::post('order/{id}/update/status', [OrderController::class,'updateStatus']);
+Route::resource('deliverys', DeliveryController::class);
 
 
 

@@ -109,6 +109,7 @@ class ProductController extends Controller {
         $order = new Order();
         $order->date = $date;
         $order->shipping_address = $request->shipping_address;
+        $order->shipping_phone = $request->shipping_phone;
         $order->Voucher_no = rand( 1000, 10000 );
         $order->status = 'Order';
         // For status Cart buying
@@ -142,8 +143,7 @@ class ProductController extends Controller {
     public function buyNow( Request $request, $id ) {
         $totalQuantity = 0 ;
         $purchaseOrders = PurchaseOrder::where( 'product_id', $id )->get();
-        foreach ( $purchaseOrders as $purchaseOrder ) 
-        {
+        foreach ( $purchaseOrders as $purchaseOrder )  {
             $totalQuantity += $purchaseOrder->quantity;
         }
         // dd( $totalQuantity );
@@ -157,6 +157,8 @@ class ProductController extends Controller {
             $order->date = $date;
             $order->Voucher_no = rand( 1000, 10000 );
             $order->shipping_address = $request->shipping_address;
+            $order->shipping_phone = $request->shipping_phone;
+
             $order->status = 'Order' ;
             //For status Buy Now
             $order->save();
@@ -182,7 +184,7 @@ class ProductController extends Controller {
 
     }
 
-    public function preorder(Request $request,$id ){
+    public function preorder( Request $request, $id ) {
         $date = Carbon::now()->format( 'd-m-Y' );
         $product = Product::findOrFail( $id );
         // dd( $product->toArray() );
@@ -190,6 +192,8 @@ class ProductController extends Controller {
         $order->date = $date;
         $order->Voucher_no = rand( 1000, 10000 );
         $order->shipping_address = $request->shipping_address;
+        $order->shipping_phone = $request->shipping_phone;
+
         $order->status = 'PreOrder';
         //For status Buy Now
         $order->save();
@@ -220,5 +224,7 @@ class ProductController extends Controller {
         return view( 'preOrderCart', compact( 'product' ) );
 
     }
+
+    
 
 }

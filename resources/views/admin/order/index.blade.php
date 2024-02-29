@@ -23,7 +23,7 @@
                             <th scope="col"> Images</th>
                             <th scope="col"> Qty</th>
                             <th scope="col"> Status</th>
-                            <th scope="col">Shipping Address</th>
+                            <th scope="col">Shipping Informations</th>
                             <th scope="col">Action </th>
                         </tr>
                     </thead>
@@ -53,6 +53,13 @@
                                     @endforeach
                                 </td>
                                 <td>
+                                    {{-- @if ($order->order_status == 'accept')
+                                   <span class="badge bg-success">Accept Order</span>
+                                   @elseif($order->order_status =='reject')
+                                   <span class="badge bg-danger">Reject Order</span>
+                                   @else
+                                   <span class="badge bg-warning">Pending Order</span>
+                                   @endif --}}
                                     {{ $order->status }}
                                 </td>
                                 <td class="text-wrap p-2">
@@ -62,6 +69,8 @@
                                     @elseif($order->order_status == 'accept')
                                         <div style="width: 6rem; color:#1d0dff">
                                             {{ $order->shipping_address }}
+                                            <br>
+                                            {{ $order->shipping_phone }}
                                         </div>
                                     @elseif($order->order_status == 'reject')
                                         <h6 class="text-danger">Cancel Order</h6>
@@ -71,10 +80,12 @@
                                 <td>
                                     <div class="d-flex">
                                         @if ($order->order_status == null)
-                                            <form action="{{ url("admin/order/$order->id/update/status") }}" method="POST">
+                                            <form action="{{ url("admin/order/$order->id/update/status") }}"
+                                                method="POST">
 
                                                 @csrf
                                                 <input type="hidden" name="order_status" value="accept">
+
                                                 <h6>Accept</h6>
 
                                                 <button type="submit" class="btn btn-success btn-sm">
@@ -83,20 +94,20 @@
                                             </form>
                                             <form action="{{ url("admin/order/$order->id/update/status") }}"
                                                 method="POST">
-
                                                 @csrf
-                                                <h6 class="mx-3">Reject</h6>
-                                                <input type="hidden" name="order_status" value="reject">
 
+                                                <h6 class="mx-3">Reject</h6>
+
+                                                <input type="hidden" name="order_status" value="reject">
                                                 <button type="submit" class="btn btn-danger btn-sm mx-3">
                                                     <i class="fa-solid fa-circle-xmark fa-xl  mx-2"></i>
                                                 </button>
                                             </form>
                                         @elseif($order->order_status == 'accept')
-                                            <h6 class="mx-3">Accepted Order</h6>
+                                            {{-- <h6 class="mx-3">Accepted Order</h6> --}}
                                             <i class="fa-solid fa-circle-check fa-xl" style="color: #00d123;"></i>
                                         @elseif($order->order_status == 'reject')
-                                            <h6 class="mx-3">Rejected Order</h6>
+                                            {{-- <h6 class="mx-3">Rejected Order</h6> --}}
                                             <i class="fa-solid fa-circle-xmark fa-xl" style="color: #ff0000;"></i>
                                         @endif
                                     </div>

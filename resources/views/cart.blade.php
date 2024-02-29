@@ -168,11 +168,14 @@
 
                             <form action="{{ route('checkout.from.cart') }}" method="POST">
                                 @csrf
-                                <div class="card mb-4">
+                                <div class="card mb-4 bg-warning">
                                     <div class="card-body">
                                         <p><strong>Expected shipping delivery</strong></p>
                                         <input type="text" class="form-control" placeholder="Enter shipping Address..."
                                             name="shipping_address">
+                                        <p class="mt-3"><strong>Shipping Phone Number</strong></p>
+                                        <input type="text" class="form-control"
+                                            placeholder="Enter shipping Phone Number..." name="shipping_phone">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">

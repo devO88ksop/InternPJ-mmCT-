@@ -22,7 +22,7 @@
                             <th scope="col"> Product Name</th>
                             <th scope="col"> Images</th>
                             <th scope="col"> Status</th>
-                            <th scope="col">Shipping Address</th>
+                            <th scope="col">Shipping Informations</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -56,6 +56,8 @@
                                     @elseif($order->order_status == 'accept')
                                         <div style="width: 6rem; color:#1d0dff">
                                             {{ $order->shipping_address }}
+                                            <br>
+                                           {{ $order->shipping_phone }} 
                                         </div>
                                     @elseif($order->order_status == 'reject')
                                         <h6 class="text-danger">Cancel Order</h6>
