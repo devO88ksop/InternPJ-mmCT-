@@ -53,13 +53,7 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    {{-- @if ($order->order_status == 'accept')
-                                   <span class="badge bg-success">Accept Order</span>
-                                   @elseif($order->order_status =='reject')
-                                   <span class="badge bg-danger">Reject Order</span>
-                                   @else
-                                   <span class="badge bg-warning">Pending Order</span>
-                                   @endif --}}
+                                    
                                     {{ $order->status }}
                                 </td>
                                 <td class="text-wrap p-2">

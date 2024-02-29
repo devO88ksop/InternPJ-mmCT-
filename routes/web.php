@@ -49,6 +49,7 @@ Route::get('preorder', [OrderController::class,'preOrder'])->name('preorder');
 Route::resource('subcategories', SubCategoryController::class);
 Route::resource('PurchaseOrders', PurchaseOrderController::class);
 Route::post('order/{id}/update/status', [OrderController::class,'updateStatus']);
+Route::post('order/{id}/update/delivery', [OrderController::class,'updateDelivery']);
 Route::resource('deliverys', DeliveryController::class);
 
 

@@ -78,8 +78,7 @@ class OrderController extends Controller {
 
         $order->update();
 
-        if ( $order->order_status == 'accept' ) 
-        {
+        if ( $order->order_status == 'accept' )  {
             $delivery = new Delivery();
             $delivery->order_id = $order->id;
             // $delivery->status = $order->order_status;
@@ -91,6 +90,15 @@ class OrderController extends Controller {
 
         return redirect()->back();
 
+    }
+
+    public function updateDelivery( $id )  
+    {
+        // dd( request()->status );
+        $delivery = Delivery::findOrfail( $id );
+        $delivery->status = request()->status;
+        $delivery->update();
+        return redirect()->back();
     }
 
 }
