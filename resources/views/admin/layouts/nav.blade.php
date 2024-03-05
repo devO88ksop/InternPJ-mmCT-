@@ -62,13 +62,17 @@
                                 <a href="{{ url('admin/preorder') }}" class="nav-link" data-key="t-order">Pre-Orders</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/PurchaseOrders') }}" class="nav-link" data-key="t-order">Purchase
+                                <a href="{{ url('admin/PurchaseOrders') }}" class="nav-link"
+                                    data-key="t-order">Purchase
                                     Orders</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('admin/deliverys') }}" class="nav-link" data-key="t-order">Delivery Informations</a>
+                                <a href="{{ url('admin/deliverys') }}" class="nav-link" data-key="t-order">Delivery
+                                    Informations</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a href="{{ url('admin/sliders') }}" class="nav-link" data-key="t-order">Slider Images</a>
+                            </li>
 
 
                         </ul>

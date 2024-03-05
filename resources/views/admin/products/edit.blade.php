@@ -3,7 +3,7 @@
 
     <div class="page-content">
         <div class="container-fluid">
-            <form action="{{ url('admin/products/'.$products->id) }}" method="POST">
+            <form action="{{ url('admin/products/'.$products->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row mb-3">

@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div class="container">
-              {{-- <a href="#brandSection">jump link</a> --}}
+                {{-- <a href="#brandSection">jump link</a> --}}
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -135,7 +135,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="detail-box">
                                         <h1>
                                             The Latest
@@ -156,7 +156,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6 img-container">
                                     <div class="img-box">
                                         <img src="{{ asset('assets/images_fe/slider-img.png') }}" alt="">
@@ -164,7 +164,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item ">
+                        {{-- <div class="carousel-item ">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="detail-box">
@@ -256,7 +256,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
