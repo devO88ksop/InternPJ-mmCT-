@@ -135,7 +135,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row">
-                                {{-- <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="detail-box">
                                         <h1>
                                             The Latest
@@ -156,7 +156,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="col-md-6 img-container">
                                     <div class="img-box">
                                         <img src="{{ asset('assets/images_fe/slider-img.png') }}" alt="">
