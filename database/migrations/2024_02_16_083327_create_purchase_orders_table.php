@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('date');
             $table->string('quantity');
+            $table->string('current_quantity');
             $table->foreignId('product_id');
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ class PurchaseOrderRepository implements PurchaseOrderInterface{
         $purchaseOrders = new PurchaseOrder();
         $purchaseOrders->date = $request->date;
         $purchaseOrders->quantity = $request->quantity;
+        $purchaseOrders->current_quantity = $request->quantity;
         $purchaseOrders->product_id = $request->product_id;
 
         // dd($purchaseOrders->toArray());
@@ -32,6 +33,7 @@ class PurchaseOrderRepository implements PurchaseOrderInterface{
         $purchaseOrders = $this->findById($id);
         $purchaseOrders->date = $request->date;
         $purchaseOrders->quantity = $request->quantity;
+        $purchaseOrders->current_quantity = $request->quantity;
         $purchaseOrders->product_id = $request->product_id;
 
         $purchaseOrders->update();

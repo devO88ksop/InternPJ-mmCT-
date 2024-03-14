@@ -24,6 +24,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Date</th>
                             <th scope="col">Quantity</th>
+                            <th scope="col">Current Stocks Quantity</th>
                             <th scope="col">Product ID</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -34,6 +35,7 @@
                                 <td scope="row">{{ $purchaseOrder->id }}</td>
                                 <td>{{ $purchaseOrder->date }}</td>
                                 <td>{{ $purchaseOrder->quantity }}</td>
+                                <td>{{ $purchaseOrder->current_quantity }}</td>
                                 <td>{{ $purchaseOrder->product?->name }} </td>
 
 

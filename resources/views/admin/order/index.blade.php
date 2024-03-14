@@ -53,7 +53,7 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    
+
                                     {{ $order->status }}
                                 </td>
                                 <td class="text-wrap p-2">
@@ -69,8 +69,8 @@
                                     @elseif($order->order_status == 'reject')
                                         <h6 class="text-danger">Cancel Order</h6>
                                     @endif
-
                                 </td>
+
                                 <td>
                                     <div class="d-flex">
                                         @if ($order->order_status == null)

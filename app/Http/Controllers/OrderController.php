@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Delivery;
+use App\Models\OrderDetails;
 use Illuminate\Http\Request;
+use App\Models\PurchaseOrder;
 
 class OrderController extends Controller {
     /**
@@ -16,6 +18,56 @@ class OrderController extends Controller {
         return view( 'admin.order.index', compact( 'orders' ) );
     }
 
+    public function preOrder() {
+
+        $orders = Order::where( 'status', 'like', 'PreOrder' )->paginate();
+        // dd( $orders );
+        return view( 'admin.order.preorder', compact( 'orders' ) );
+
+    }
+
+    public function updateStatus( $id ) {
+        $order = Order::findOrfail( $id );
+        // dd( $order->OrderDetails );
+
+        $order->order_status = request()->order_status;
+
+        $order->update();
+
+        if ( $order->order_status == 'accept' ) {
+
+            foreach ( $order->OrderDetails as $orderDetail ) {
+                $purchaseOrder = PurchaseOrder::where( 'product_id', $orderDetail->product_id )->first();
+                $purchaseOrder->current_quantity -= $orderDetail->quantity;
+                $purchaseOrder->update();
+
+            }
+            $delivery = new Delivery();
+            $delivery->order_id = $order->id;
+            $delivery->status = $order->order_status;
+            $delivery->shipping_address = $order->shipping_address;
+            $delivery->save();
+        }
+        // if ( $delivery->status == 'On-going' ) {
+        //     $purchaseOrder = new PurchaseOrder();
+        //     $orderDetails = OrderDetails::where( 'order_id', $order->id )->get();
+        //     $purchaseOrder->current_quantity = $orderDetails->quantity - $purchaseOrder->quantity;
+
+        // }
+
+        // dd( $deliveries->toArray() );
+
+        return redirect()->back();
+
+    }
+
+    public function updateDelivery( $id ) {
+        // dd( request()->status );
+        $delivery = Delivery::findOrfail( $id );
+        $delivery->status = request()->status;
+        $delivery->update();
+        return redirect()->back();
+    }
     /**
     * Show the form for creating a new resource.
     */
@@ -62,43 +114,6 @@ class OrderController extends Controller {
 
     public function destroy( string $id ) {
         //
-    }
-
-    public function preOrder() {
-
-        $orders = Order::where( 'status', 'like', 'PreOrder' )->paginate();
-        // dd( $orders );
-        return view( 'admin.order.preorder', compact( 'orders' ) );
-
-    }
-
-    public function updateStatus( $id ) {
-        $order = Order::findOrfail( $id );
-        $order->order_status = request()->order_status;
-
-        $order->update();
-
-        if ( $order->order_status == 'accept' )  {
-            $delivery = new Delivery();
-            $delivery->order_id = $order->id;
-            // $delivery->status = $order->order_status;
-            $delivery->shipping_address = $order->shipping_address;
-            $delivery->save();
-        }
-
-        // dd( $deliveries->toArray() );
-
-        return redirect()->back();
-
-    }
-
-    public function updateDelivery( $id )  
-    {
-        // dd( request()->status );
-        $delivery = Delivery::findOrfail( $id );
-        $delivery->status = request()->status;
-        $delivery->update();
-        return redirect()->back();
     }
 
 }
