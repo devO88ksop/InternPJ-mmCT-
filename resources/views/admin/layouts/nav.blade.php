@@ -73,6 +73,9 @@
                             <li class="nav-item">
                                 <a href="{{ url('admin/sliders') }}" class="nav-link" data-key="t-order">Slider Images</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('admin/aboutus') }}" class="nav-link" data-key="t-order">AboutUs Section</a>
+                            </li>
 
 
                         </ul>

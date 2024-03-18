@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryController;
@@ -53,6 +54,7 @@ Route::post('order/{id}/update/status', [OrderController::class,'updateStatus'])
 Route::post('order/{id}/update/delivery', [OrderController::class,'updateDelivery']);
 Route::resource('deliverys', DeliveryController::class);
 Route::resource('sliders', SliderController::class);
+Route::resource('aboutus' , AboutUsController::class);
 
 
 

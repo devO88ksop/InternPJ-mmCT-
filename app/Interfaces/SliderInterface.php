@@ -11,6 +11,6 @@ interface SliderInterface {
 
     public function update( $id );
 
-    // public function destroy( $id );
+    public function destroy( $id );
 
 }

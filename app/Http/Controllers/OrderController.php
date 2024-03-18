@@ -36,26 +36,23 @@ class OrderController extends Controller {
 
         if ( $order->order_status == 'accept' ) {
 
-            foreach ( $order->OrderDetails as $orderDetail ) {
-                $purchaseOrder = PurchaseOrder::where( 'product_id', $orderDetail->product_id )->first();
-                $purchaseOrder->current_quantity -= $orderDetail->quantity;
-                $purchaseOrder->update();
+            if ( $order->status == 'PreOrder' ) {
 
+            } else {
+                foreach ( $order->OrderDetails as $orderDetail ) {
+                    $purchaseOrder = PurchaseOrder::where( 'product_id', $orderDetail->product_id )->first();
+                    $purchaseOrder->current_quantity -= $orderDetail->quantity;
+                    $purchaseOrder->update();
+
+                }
+                $delivery = new Delivery();
+                $delivery->order_id = $order->id;
+                $delivery->status = $order->order_status;
+                $delivery->shipping_address = $order->shipping_address;
+                $delivery->save();
             }
-            $delivery = new Delivery();
-            $delivery->order_id = $order->id;
-            $delivery->status = $order->order_status;
-            $delivery->shipping_address = $order->shipping_address;
-            $delivery->save();
+
         }
-        // if ( $delivery->status == 'On-going' ) {
-        //     $purchaseOrder = new PurchaseOrder();
-        //     $orderDetails = OrderDetails::where( 'order_id', $order->id )->get();
-        //     $purchaseOrder->current_quantity = $orderDetails->quantity - $purchaseOrder->quantity;
-
-        // }
-
-        // dd( $deliveries->toArray() );
 
         return redirect()->back();
 

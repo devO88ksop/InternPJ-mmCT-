@@ -34,6 +34,7 @@
     <!-- responsive style -->
     <link href="{{ asset('assets/css_fe/responsive.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -107,162 +108,13 @@
         <!-- end header section -->
 
         <!-- slider section -->
-        <section class="slider_section ">
-            <div class="play_btn">
-                <a href="">
-                    <img src="{{ asset('assets/images_fe/play.png') }}" alt="">
-                </a>
-            </div>
-            <div class="number_box">
-                <div>
-                    <ol class="carousel-indicators indicator-2">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1">02</li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2">03</li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3">04</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="container">
-                {{-- <a href="#brandSection">jump link</a> --}}
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>
-                                                Furniture
-                                            </span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                            do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div class="btn-box">
-                                            <a href="#brandSection" class="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" class="btn-2">
-                                                Contact us
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 img-container">
-                                    <div class="img-box">
-                                        <img src="{{ asset('assets/images_fe/slider-img.png') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- <div class="carousel-item ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>
-                                                Furniture
-                                            </span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                            do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div class="btn-box">
-                                            <a href="" class="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" class="btn-2">
-                                                Contact us
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 img-container">
-                                    <div class="img-box">
-                                        <img src="{{ asset('assets/images_fe/slider-img.png') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>
-                                                Furniture
-                                            </span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                            do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div class="btn-box">
-                                            <a href="" class="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" class="btn-2">
-                                                Contact us
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 img-container">
-                                    <div class="img-box">
-                                        <img src="{{ asset('assets/images_fe/slider-img.png') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>
-                                                Furniture
-                                            </span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                            do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div class="btn-box">
-                                            <a href="" class="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" class="btn-2">
-                                                Contact us
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 img-container">
-                                    <div class="img-box">
-                                        <img src="{{ asset('assets/images_fe/slider-img.png') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end slider section -->
+       
     </div>
+
+    {{-- </div> --}}
+
+    <!-- end slider section -->
+
 
 
 
@@ -494,6 +346,73 @@
             console.log(indicators);
 
         })
+    </script>
+    <script>
+        // Select all slides
+        const slides = document.querySelectorAll(".custom-slide");
+
+        // Total number of slides
+        const totalSlides = slides.length;
+
+        // Current slide counter
+        let curSlide = 0;
+
+        // Function to show next slide
+        function showNextSlide() {
+            // Hide current slide
+            slides[curSlide].style.display = "none";
+
+            // Move to the next slide
+            curSlide = (curSlide + 1) % totalSlides;
+
+            // Show next slide
+            slides[curSlide].style.display = "block";
+        }
+
+        // Set interval for autoplay
+        let interval = setInterval(showNextSlide, 3000); // Change 3000 to adjust autoplay speed
+
+        // Stop autoplay when mouse is over the slider
+        const slider = document.querySelector('.custom-slider');
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(interval);
+        });
+
+        // Resume autoplay when mouse leaves the slider
+        slider.addEventListener('mouseleave', () => {
+            clearInterval(interval); // Clear interval to ensure no overlap
+            interval = setInterval(showNextSlide, 3000); // Change 3000 to adjust autoplay speed
+        });
+
+        // Select prev slide button
+        const prevSlide = document.querySelector(".custom-btn-prev");
+
+        // Add event listener and navigation functionality for previous slide
+        prevSlide.addEventListener("click", function() {
+            // Hide current slide
+            slides[curSlide].style.display = "none";
+
+            // Move to the previous slide
+            curSlide = (curSlide - 1 + totalSlides) % totalSlides;
+
+            // Show previous slide
+            slides[curSlide].style.display = "block";
+        });
+
+        // Select next slide button
+        const nextSlide = document.querySelector(".custom-  btn-next");
+
+        // Add event listener and navigation functionality for next slide
+        nextSlide.addEventListener("click", function() {
+            // Hide current slide
+            slides[curSlide].style.display = "none";
+
+            // Move to the next slide
+            curSlide = (curSlide + 1) % totalSlides;
+
+            // Show next slide
+            slides[curSlide].style.display = "block";
+        });
     </script>
     @yield('scripts')
 

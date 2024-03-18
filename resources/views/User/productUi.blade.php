@@ -1,5 +1,25 @@
 @extends('layouts.masterL')
 @section('content')
+    {{-- slider section --}}
+    <section class="slider_section">
+        <div class="custom-slider">
+            {{-- <div class="play_btn">
+            <a href="" class="play-btn">
+                <img src="{{ asset('assets/images_fe/play.png') }}" alt="">
+            </a>
+        </div> --}}
+            @foreach ($sliders as $slider)
+                <div class="custom-slide">
+                    <img src="{{ asset('images/' . $slider->image) }}" alt="" />
+                </div>
+            @endforeach
+
+            <!-- Control buttons -->
+            <button class="custom-btn custom-btn-next"> > </button>
+            <button class="custom-btn custom-btn-prev">
+                < </button>
+        </div>
+    </section>
     <!-- brand section -->
 
 
@@ -108,7 +128,7 @@
                             <p class="btn-holder">
                             <p class="btn-holder text-danger"> This Item is Out of Stock! </p>
 
-                        
+
 
                             <p class="btn-holder" data-toggle="modal">
                                 <a href="{{ url("/ui/preorderCart/$product->id") }}" type="submit"
@@ -116,7 +136,7 @@
                                     Pre-Order !
                                 </a>
                             </p>
-                     
+
                             </p>
                         @endif
 

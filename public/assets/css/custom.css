@@ -5,3 +5,62 @@ Website: https://themesbrand.com/
 Contact: support@themesbrand.com
 File: Custom Css File
 */
+.custom-slider {
+    width: 100%;
+    max-width: 2000px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    /* border-radius: 5px; */
+}
+
+.custom-slide {
+    width: 100%;
+    max-width: 2000px;
+    height: 500px;
+    position: absolute;
+    display: none;
+}
+
+.custom-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.custom-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 30%;
+    z-index: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 18px;
+    color: #333; /* Button text color */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Button shadow */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease,
+        box-shadow 0.3s ease; /* Smooth transition */
+}
+.custom-btn:hover {
+    background-color: rgb(41, 204, 120); /* Hover background color */
+    color: #021802; /* Hover text color */
+}
+
+.custom-btn:active {
+    transform: scale(1.1);
+}
+
+.custom-btn-prev {
+    top: 50%;
+    left: 20px; /* Adjust left position */
+    transform: translateY(-50%);
+}
+
+.custom-btn-next {
+    top: 50%;
+    right: 20px; /* Adjust right position */
+    transform: translateY(-50%);
+}

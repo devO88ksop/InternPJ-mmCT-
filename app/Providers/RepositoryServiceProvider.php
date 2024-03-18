@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Interfaces\AboutUsInterface;
 use App\Interfaces\SliderInterface;
 use App\Models\Admin;
 use App\Models\Product;
@@ -11,6 +12,7 @@ use App\Interfaces\AdminInterface;
 
 
 use App\Interfaces\ProductInterface;
+use App\Repositories\AboutUsRepository;
 use App\Repositories\SliderRepository;
 use Illuminate\Pagination\Paginator;
 
@@ -44,6 +46,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SubCategoryInterface::class, SubCategoryRepository::class);
         $this->app->bind(PurchaseOrderInterface::class, PurchaseOrderRepository::class);
         $this->app->bind(SliderInterface::class, SliderRepository::class);
+        $this->app->bind(AboutUsInterface::class, AboutUsRepository::class);
 
 
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\UI;
 
+use App\Models\Ui\Slider;
 use session;
 use App\Models\Order;
 use App\Models\Product;
@@ -16,7 +17,8 @@ use App\Http\Controllers\Controller;
 class ProductController extends Controller {
     public function index() {
         $products = Product::paginate( 4 );
-        return view( 'User.productUi', compact( 'products' ) );
+        $sliders  = Slider::paginate( 4 );
+        return view( 'User.productUi', compact( 'products', 'sliders' ) );
     }
 
     public function category() {
@@ -143,7 +145,7 @@ class ProductController extends Controller {
     public function buyNow( Request $request, $id ) {
         $totalQuantity = 0 ;
         $purchaseOrders = PurchaseOrder::where( 'product_id', $id )->get();
-        foreach ( $purchaseOrders as $purchaseOrder )  {
+        foreach ( $purchaseOrders as $purchaseOrder ) {
             $totalQuantity += $purchaseOrder->quantity;
         }
         // dd( $totalQuantity );
@@ -224,7 +226,5 @@ class ProductController extends Controller {
         return view( 'preOrderCart', compact( 'product' ) );
 
     }
-
-    
 
 }

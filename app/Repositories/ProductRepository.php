@@ -14,7 +14,7 @@ class ProductRepository implements ProductInterface {
 
     public function store( $request ) {
 
-        $this->productValidationCheck( $request );
+        // $this->productValidationCheck( $request );
 
         $imageName = time().'.'.$request->image->extension();
 

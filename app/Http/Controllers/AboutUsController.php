@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\AboutUsInterface;
 use Illuminate\Http\Request;
-use App\Interfaces\SliderInterface;
 
-class SliderController extends Controller {
-    private $slider;
+class AboutUsController extends Controller {
+    private $aboutus;
 
-    public function __construct( SliderInterface $sliderInterface ) {
-        $this->slider = $sliderInterface;
+    public function __construct( AboutUsInterface $aboutUsInterface ) {
+        $this->aboutus = $aboutUsInterface;
 
     }
+    /**
+    * Display a listing of the resource.
+    */
 
     public function index() {
-        $sliders = $this->slider->all();
-        return view( 'admin.sliders.index', compact( 'sliders' ) );
+        $aboutus = $this->aboutus->all();
+        return view( 'admin.AboutUs.index', compact( 'aboutus' ) );
     }
 
     /**
@@ -23,8 +26,7 @@ class SliderController extends Controller {
     */
 
     public function create() {
-
-        return view( 'admin.sliders.create' );
+        return view( 'admin.AboutUs.create' );
     }
 
     /**
@@ -32,8 +34,10 @@ class SliderController extends Controller {
     */
 
     public function store( Request $request ) {
-        $this->slider->store( $request );
-        return redirect( 'admin/sliders' );
+
+        $this->aboutus->store( $request );
+        // dd( $request->all() );
+        return redirect( 'admin/aboutus' );
     }
 
     /**
@@ -49,9 +53,7 @@ class SliderController extends Controller {
     */
 
     public function edit( string $id ) {
-        $sliders = $this->slider->findById( $id );
-        return view( 'admin.sliders.edit', compact( 'sliders' ) );
-
+        //
     }
 
     /**
@@ -59,8 +61,7 @@ class SliderController extends Controller {
     */
 
     public function update( Request $request, string $id ) {
-        $this->slider->update( $id );
-        return redirect( 'admin/sliders' );
+        //
     }
 
     /**
@@ -68,8 +69,6 @@ class SliderController extends Controller {
     */
 
     public function destroy( string $id ) {
-
-        $this->slider->destroy( $id );
-        return redirect( 'admin/sliders' );
+        //
     }
 }
