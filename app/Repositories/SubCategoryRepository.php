@@ -12,70 +12,63 @@ use App\Interfaces\SubCategoryInterface;
 
 class SubCategoryRepository implements SubCategoryInterface
 {
-    public function all()
-    {
-        return SubCategory::paginate(10);
+    public function all() {
+        return SubCategory::paginate( 10 );
     }
-    public function store($request)
-    {
-        // dd(request()->all());
 
-        $validated = $request->validate([
+    public function store( $request ) {
+        // dd( request()->all() );
+
+        $validated = $request->validate( [
             'name' => 'required|unique:categories|max:255',
             'category_id' => 'required '
-        ]);
+        ] );
 
-        $subcategories = new SubCategory();
+        $subCategory = new SubCategory();
 
         $imageName = time() . '.' . $request->image->extension();
 
-        $subcategories->name = request()->name;
-        $subcategories->category_id = request()->category_id;
+        $subCategory->name = request()->name;
+        $subCategory->category_id = request()->category_id;
 
-        $request->image->move(public_path('images'), $imageName);
-        $subcategories->image = $imageName;
+        $request->image->move( public_path( 'images' ), $imageName );
+        $subCategory->image = $imageName;
 
-        $subcategories->save();
-    }
-    public function findById($id)
-    {
-
-        return SubCategory::findOrFail($id);
+        $subCategory->save();
     }
 
-    public function update($id)
-    {
+    public function findById( $id ) {
+        return SubCategory::findOrFail( $id );
+    }
 
-        $subcategories = $this->findById($id);
-        $subcategories->name = request()->name;
-        $subcategories->category_id = request()->category_id;
+    public function update( $id ) {
+        $subCategory = $this->findById( $id );
 
-        if (request()->hasFile('image')) {
+        $subCategory->name = request()->name;
+        $subCategory->category_id = request()->category_id;
 
-            $imageName = time() . '.' . request()->image->extension();
+        if ( request()->hasFile( 'image' ) ) {
 
+            $newImageName = time() . '.' . request()->image->extension();
 
-            if (File::exists(public_path("images/$subcategories->image"))) {
-
-                // File::delete()
-                File::delete(public_path("images/$subcategories->image"));
+            if ( File::exists( public_path( "images/$subCategory->image" ) ) ) {
+                File::delete( public_path( "images/$subCategory->image" ) );
             }
 
-            request()->image->move(public_path('images'), $imageName);
+            request()->image->move( public_path( 'images' ), $newImageName );
+            $subCategory->image = $newImageName;
 
-            $subcategories->image = $imageName;
-        } else 
-        {
-            $subcategories->image = $subcategories->image;
+        } else {
+            // $subCategory->image = $subCategory->image;
         }
 
-        $subcategories->update();
-    }
-    public function destroy($id)
-    {
-        $subcategories = $this->findById($id);
-        $subcategories->delete();
+        $subCategory->update();
     }
 
+    public function destroy( $id ) {
+        $subCategory = $this->findById( $id );
+        $subCategory->delete();
+    }
 
 }
+

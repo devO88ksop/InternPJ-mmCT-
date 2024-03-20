@@ -15,7 +15,9 @@
 
                         <div class="card-body">
                             <!-- Single item -->
-                            @php $total = 0 @endphp
+                            @php 
+                            $total = 0 
+                            @endphp
                             @if (session('cart'))
                                 @foreach (session('cart') as $id => $details)
                                     @php $total += $details['price'] * $details['quantity'] @endphp
@@ -68,36 +70,68 @@
                                         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                             <!-- Quantity -->
                                             <div class="d-flex mb-4" style="max-width: 300px">
+                                            @if(session('cart'))
+
+                                                @php
+
+                                                $purchaseOrders = App\Models\PurchaseOrder::where('product_id',$id)->first();
+
+                                                @endphp
 
 
+                                                @foreach (session('cart') as $id => $details)
+                                                {{-- @if($details['quantity'] = 0) --}}
+                                                    <form action="{{ url('/ui/minusupdate-cart') }}" method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input type="hidden" name="id" value="{{ $id }}">
+                                                        <input type="hidden" name="quantity"
+                                                            value="{{ $details['quantity'] }}">
+                                                        <button class="btn btn-danger mt-1">
+                                                            <i class="fa-solid fa-minus"></i>
+                                                        </button>
+                                                    </form>
+                                                    {{-- @endif --}}
+                                                    <div class="form-outline">
 
-                                                <form action="{{ url('/ui/minusupdate-cart') }}" method="POST">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <input type="hidden" name="id" value="{{ $id }}">
-                                                    <input type="hidden" name="quantity"
-                                                        value="{{ $details['quantity'] }}">
-                                                    <button class="btn btn-danger mt-1">
-                                                        <i class="fa-solid fa-minus"></i>
-                                                    </button>
-                                                </form>
-                                                <div class="form-outline">
-                                                    <input id="quantity" min="0" name="quantity"
-                                                        value="{{ $details['quantity'] }}" type="number"
-                                                        class="form-control quantity " />
-                                                    <label class="form-label" for="quantity">Quantity</label>
-                                                </div>
+                                                        <input id="quantity" min="0" name="quantity"
+                                                            value="{{ $details['quantity'] }}" type="number"
+                                                            class="form-control quantity " />
+                                                        <label class="form-label" for="quantity">Quantity</label>
 
-                                                <form action="{{ url('/ui/update-cart') }}" method="POST">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <input type="hidden" name="id" value="{{ $id }}">
-                                                    <input type="hidden" name="quantity"
-                                                        value="{{ $details['quantity'] }}">
-                                                    <button class="btn btn-primary mt-1">
-                                                        <i class="fa-solid fa-plus"></i>
-                                                    </button>
-                                                </form>
+                                                    </div>
+                                                    @if($details['quantity'] < $purchaseOrders->current_quantity)
+                                                    <form action="{{ url('/ui/update-cart') }}" method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input type="hidden" name="id" value="{{ $id }}">
+                                                        <input type="hidden" name="quantity"
+                                                            value="{{ $details['quantity'] }}">
+                                                        <button class="btn btn-primary mt-1">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </button>
+                                                    </form>
+                                                    @endif
+                                                   
+                                                   
+                                                    {{-- @else --}}
+                                                    
+                                                  
+                                                    
+                                                    {{-- <form action="{{ url('/ui/minusupdate-cart') }}" method="POST">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <input type="hidden" name="id" value="{{ $id }}">
+                                                        <input type="hidden" name="quantity"
+                                                            value="{{ $details['quantity'] }}">
+                                                        <button class="btn btn-danger mt-1">
+                                                            <i class="fa-solid fa-minus"></i>
+                                                        </button>
+                                                    </form> --}}
+                                                    
+                                                    
+                                                    @endforeach
+                                                    @endif
                                             </div>
 
                                             <p class="text-start text-md-center">

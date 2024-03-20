@@ -3,7 +3,7 @@
 
     <div class="page-content">
         <div class="container-fluid">
-            <form action="{{ url('admin/subcategories/'.$subcategories->id) }}" method="POST">
+            <form action="{{ url('admin/subcategories/' . $subcategories->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="d-flex justify-content-center">
@@ -41,7 +41,7 @@
                                 <input name="image" value="{{ $subcategories->image }}" type="file"
                                     accept="image/png, image/.jpeg, image/jpg" class="form-control" id="imageInput"
                                     placeholder="Enter your image">
-                                    <img src="{{ asset('images/' . $subcategories ->image) }}"
+                                <img src="{{ asset('images/' . $subcategories->image) }}"
                                     class="img-thumbnail shadow-sm rounded mt-3" style="height: 60px">
                             </div>
                         </div>

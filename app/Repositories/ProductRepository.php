@@ -68,7 +68,8 @@ class ProductRepository implements ProductInterface {
 
     }
 
-    public function destroy( $id ) {
+    public function destroy( $id ) 
+    {
         $product = $this->findById( $id );
         $product->delete();
 

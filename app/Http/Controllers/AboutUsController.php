@@ -53,7 +53,9 @@ class AboutUsController extends Controller {
     */
 
     public function edit( string $id ) {
-        //
+        $aboutus = $this->aboutus->findById( $id );
+
+        return view( 'admin.AboutUs.edit', compact( 'aboutus' ) );
     }
 
     /**
@@ -61,7 +63,8 @@ class AboutUsController extends Controller {
     */
 
     public function update( Request $request, string $id ) {
-        //
+        $this->aboutus->update( $id );
+        return redirect( 'admin/aboutus' );
     }
 
     /**
@@ -69,6 +72,7 @@ class AboutUsController extends Controller {
     */
 
     public function destroy( string $id ) {
-        //
+        $this->aboutus->destroy( $id );
+        return redirect( 'admin/aboutus' );
     }
 }

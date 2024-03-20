@@ -17,7 +17,7 @@
                 <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('assets/images/suluck.png') }}" alt="" height="36">
+                {{-- <img src="{{ asset('assets/images/suluck.png') }}" alt="" height="36"> --}}
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"

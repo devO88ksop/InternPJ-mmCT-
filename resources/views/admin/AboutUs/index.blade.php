@@ -15,8 +15,9 @@
                                             class="ri-user-smile-line label-icon align-middle fs-16 me-2"></i> Add</button>
                                 </a>
                             </div>
-                            @elseif
-                            <strong>
+                        @else
+                            <strong  class="text-danger">
+
                                 You Can't Add.
 
                             </strong>
@@ -51,12 +52,12 @@
 
                                 <td>
                                     <div class="hstack gap-3 flex-wrap">
-                                        <a href="{{ url('admin/sliders/' . $abs->id . '/edit') }}"
+                                        <a href="{{ url('admin/aboutus/' . $abs->id . '/edit') }}"
                                             href="javascript:void(0);" class="link-success fs-15"> <i
                                                 class="ri-edit-2-line"></i>
                                         </a>
                                         <div class="remove">
-                                            <form action="{{ url('admin/sliders/' . $abs->id) }}" method="POST">
+                                            <form action="{{ url('admin/aboutus/' . $abs->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button style="background-color: transparent; border:none;"

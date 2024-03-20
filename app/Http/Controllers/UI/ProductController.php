@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers\UI;
 
-use App\Models\Ui\Slider;
 use session;
 use App\Models\Order;
+use App\Models\AboutUs;
 use App\Models\Product;
+use App\Models\Ui\Slider;
 use App\Models\SubCategory;
 use App\Models\OrderDetails;
 use Illuminate\Http\Request;
 use App\Models\PurchaseOrder;
-use Illuminate\Support\Carbon;
 
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller {
     public function index() {
         $products = Product::paginate( 4 );
         $sliders  = Slider::paginate( 4 );
-        return view( 'User.productUi', compact( 'products', 'sliders' ) );
+        $aboutus  = AboutUs::paginate( 1 );
+        return view( 'User.productUi', compact( 'products', 'sliders', 'aboutus' ) );
     }
 
     public function category() {
@@ -27,7 +29,8 @@ class ProductController extends Controller {
     }
 
     public function cart() {
-        return view( 'cart' );
+        $purchaseOrders = PurchaseOrder::all();
+        return view( 'cart', compact( 'purchaseOrders' ) );
     }
 
     public function addToCart( $id ) {
